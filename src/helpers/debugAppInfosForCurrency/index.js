@@ -3,6 +3,7 @@
 import type { CryptoCurrency } from '@ledgerhq/live-common/lib/types'
 import invariant from 'invariant'
 import type Transport from '@ledgerhq/hw-transport'
+import aeternity from './aeternity'
 import bitcoin from './btc'
 import ethereum from './ethereum'
 import ripple from './ripple'
@@ -15,6 +16,7 @@ type Resolver = (
 }>
 
 const perFamily: { [_: string]: * } = {
+  aeternity,
   bitcoin,
   ethereum,
   ripple,
