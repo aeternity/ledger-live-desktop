@@ -2,6 +2,7 @@
 
 import type Transport from '@ledgerhq/hw-transport'
 
+import aeternity from './aeternity'
 import ethereum from './ethereum'
 import ripple from './ripple'
 
@@ -18,6 +19,8 @@ const fallback: string => Resolver = currencyId => () =>
   Promise.reject(new Error(`${currencyId} device support not implemented`))
 
 const all = {
+  aeternity,
+
   ethereum,
   ethereum_testnet: ethereum,
   ethereum_classic: ethereum,

@@ -16,6 +16,7 @@ const supported: CryptoCurrencyIds[] = [
   'bitcoin_gold',
   'stratis',
   'dogecoin',
+  'aeternity',
   'digibyte',
   'hcash',
   'komodo',

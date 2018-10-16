@@ -19,10 +19,16 @@ etcLegacyMEW.mandatoryEmptyAccountSkip = 10
 
 const rippleLegacy: Derivation = ({ x }) => `44'/144'/0'/${x}'`
 
+const aeternity: Derivation = ({ x }) => String(x)
+
 const legacyDerivations = {
   ethereum: [ethLegacyMEW],
   ethereum_classic: [ethLegacyMEW, etcLegacyMEW],
   ripple: [rippleLegacy],
+}
+
+const derivations = {
+  aeternity,
 }
 
 export const standardDerivation: Derivation = ({ currency, segwit, x }) => {
@@ -34,5 +40,5 @@ export const standardDerivation: Derivation = ({ currency, segwit, x }) => {
 // return an array of ways to derivate, by convention the latest is the standard one.
 export const getDerivations = (currency: CryptoCurrency): Derivation[] => [
   ...(legacyDerivations[currency.id] || []),
-  standardDerivation,
+  derivations[currency.id] || standardDerivation,
 ]
