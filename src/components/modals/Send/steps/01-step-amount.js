@@ -140,7 +140,10 @@ export class StepAmountFooter extends PureComponent<
 
       if (syncId !== this.syncId) return
       const canNext =
-        !transaction.amount.isZero() && isRecipientValid && isValidTransaction && totalSpent.gt(0)
+        !bridge.getTransactionAmount(account, transaction).isZero() &&
+        isRecipientValid &&
+        isValidTransaction &&
+        totalSpent.gt(0)
       this.setState({ totalSpent, canNext, isSyncing: false })
     } catch (err) {
       logger.critical(err)
